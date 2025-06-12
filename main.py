@@ -46,6 +46,15 @@ cursor.execute(
 
 conn.commit()
 
+# update book info
+cursor.execute(
+    """
+   UPDATE books  
+    SET title="Abaddon's Gate", author="James Corey", year=2013
+    WHERE id=3;
+    """,
+)
+
 # delete books if more than 3
 cursor.execute(
     """
