@@ -35,7 +35,24 @@ cursor.execute(
     ("Caliban's War", "James Corey", 2012)
 )
 
+# add another book
+cursor.execute(
+    """
+   INSERT INTO books (title, author, year) 
+    VALUES (?, ?, ?);
+    """,
+    ("Cibola Burn", "James Corey", 2014)
+)
+
 conn.commit()
+
+# delete books if more than 3
+cursor.execute(
+    """
+   DELETE FROM books  
+    WHERE id>3;
+    """,
+)
 
 # get all books
 print(
@@ -43,6 +60,8 @@ print(
         """SELECT * FROM books;"""
     ).fetchall()
 )
+
+
 
 # close DB connection
 cursor.close()
